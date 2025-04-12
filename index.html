@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Work & Opportunities - Your Inspire IT</title> <!-- Changed Title -->
+    <title>Our Work & Opportunities - Your Inspire IT</title>
     <!-- Link to Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Link to Google Fonts -->
@@ -16,13 +16,13 @@
         :root {
             --primary-bg: #eff3ff;
             --secondary-bg: #ffffff;
-            --tertiary-bg: #f8fafc;
+            --tertiary-bg: #f8fafc; /* Used for table rows */
             --text-dark: #1e293b;
             --text-light: #475569;
             --text-lighter: #64748b;
             --accent-color: #4f46e5;
             --accent-hover: #4338ca;
-            --border-color: #e2e8f0;
+            --border-color: #e2e8f0; /* Used for table borders */
             --shadow-color: rgba(0, 0, 0, 0.08);
             --success-color: #10b981;
             --warning-color: #f59e0b;
@@ -77,6 +77,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-bottom: 60px; /* Add space below the grid */
         }
 
         .service-card {
@@ -99,6 +100,10 @@
         .service-card:nth-child(6) { animation-delay: 0.6s; }
         .service-card:nth-child(7) { animation-delay: 0.7s; }
         .service-card:nth-child(8) { animation-delay: 0.8s; }
+        .service-card:nth-child(9) { animation-delay: 0.9s; }
+        .service-card:nth-child(10) { animation-delay: 1.0s; }
+        .service-card:nth-child(11) { animation-delay: 1.1s; }
+        .service-card:nth-child(12) { animation-delay: 1.2s; }
 
 
         .service-card:hover {
@@ -124,13 +129,60 @@
              flex-grow: 1; /* Allow description to take available space */
              margin-bottom: 10px; /* Reduce bottom margin if button added */
         }
-        /* Optional: Add a button or link
-        .service-card a.learn-more {
-             margin-top: auto; // Push to bottom
-             font-weight: 500;
-             font-size: 0.9rem;
+
+        /* --- Task Price Table --- */
+        .task-table-container {
+            margin-top: 50px; /* Space above table */
+            overflow-x: auto; /* Enable horizontal scroll on small screens */
+            background-color: var(--secondary-bg);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
         }
-        */
+
+        .task-price-table {
+            width: 100%;
+            border-collapse: collapse; /* Remove gaps between cells */
+            text-align: left;
+            font-size: 0.95rem; /* Slightly smaller font for table */
+        }
+
+        .task-price-table th,
+        .task-price-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color); /* Horizontal lines */
+            color: var(--text-light);
+        }
+
+        .task-price-table th {
+            background-color: var(--tertiary-bg); /* Light grey header */
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase; /* Optional: Make headers stand out */
+            letter-spacing: 0.5px;
+        }
+
+        .task-price-table tbody tr:last-child td {
+            border-bottom: none; /* Remove border from last row */
+        }
+
+        .task-price-table tbody tr:hover {
+            background-color: var(--primary-bg); /* Highlight row on hover */
+        }
+        /* Strong emphasis for task name */
+        .task-price-table td:first-child {
+             font-weight: 500;
+             color: var(--text-dark);
+        }
+
+        /* --- Task CTA --- */
+        .task-cta-container {
+            text-align: center;
+            margin-top: 40px; /* Space above CTA */
+            margin-bottom: 20px; /* Space below CTA */
+        }
 
         /* --- Call to Action Section (Optional, reuse from index) --- */
         #cta-services {
@@ -183,6 +235,8 @@
         @media (max-width: 768px) {
              h2 { font-size: 1.7rem; }
              .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); } /* Allow slightly smaller cards */
+             .task-price-table { font-size: 0.9rem; } /* Smaller font on mobile */
+             .task-price-table th, .task-price-table td { padding: 10px 12px; }
              .footer-content { text-align: center; }
              .footer-col { flex-basis: 100%; margin-bottom: 30px; align-items: center; }
              .footer-col h4::after { left: 50%; transform: translateX(-50%); }
@@ -198,6 +252,8 @@
              .services-grid { grid-template-columns: 1fr; } /* Stack cards */
              .service-card { padding: 30px 25px; }
              .service-icon { font-size: 2.5rem; }
+             .task-price-table th, .task-price-table td { padding: 8px 10px; } /* Further reduce padding */
+             .task-table-container { padding: 15px; }
         }
 
     </style>
@@ -207,18 +263,18 @@
     <!-- Header (Update active link) -->
     <header class="main-header">
         <div class="container">
-            <a href="index.html" class="logo">Your Inspire IT</a>
+            <a href="/" class="logo">Your Inspire IT</a>
             <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
              <nav class="main-nav" id="main-nav">
-                <a href="index.html">Home</a>
-                <a href="services.html" class="active-nav">Our Work</a>
-                <a href="#">About Us</a> <!-- Mark page as active -->
-                <a href="#">Contat Us</a>
-                <a href="#">Report</a>
-                <a href="help.html">FAQ</a>
-                <a href="auth.html">Login/Sign Up</a>
+                <a href="/">Home</a>
+                <a href="/works" class="active-nav">Our Work</a>
+                <a href="/about">About Us</a> <!-- Mark page as active -->
+                <a href="/contact">Contat Us</a>
+                <a href="/report">Report</a>
+                <a href="/faq">FAQ</a>
+                <a href="/login">Login/Sign Up</a>
             </nav>
         </div>
     </header>
@@ -233,94 +289,182 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Service 1: Surveys -->
+                    <!-- Service 1: Facebook Post -->
                     <div class="service-card">
                         <i class="fa-brands fa-facebook service-icon"></i>
                         <h3>Facebook Post</h3>
                         <p>Facebook এ Post করা!</p>
                     </div>
-
-                    <!-- Service 2: Data Entry -->
+                    <!-- Service 2: Form Flipping -->
                     <div class="service-card">
                         <i class="fa-solid fa-rectangle-list service-icon"></i>
                         <h3>Form Flipping</h3>
                         <p>Online এ Form Flip করা!</p>
                     </div>
-
-                    <!-- Service 3: Content Moderation -->
-                    <div class="service-card">
-                        <i class="fa-solid fa-rectangle-ad service-icon"></i>
-                        <h3>Watching Ad</h3>
-                        <p>Ad দেখা। </p>
-                    </div>
-
-                    <!-- Service 4: Image Tagging -->
+                     <!-- Service 4: Typing -->
                     <div class="service-card">
                        <i class="fa-solid fa-keyboard service-icon"></i>
                         <h3>Typing Task</h3>
                         <p>ছবি দেখে Typing করা! </p>
                     </div>
-
-                     <!-- Service 5: Transcription -->
+                     <!-- Service 9: Website Visit -->
+                    <div class="service-card">
+                        <i class="fa-solid fa-globe service-icon"></i>
+                        <h3>Website Visit</h3>
+                        <p>যে Website এর Link দেওয়া হবে সেই Website এ গিয়ে এক মিনিটের মতো ঘুরাঘুরি করা।</p>
+                    </div>
+                     <!-- Service 5: Facebook Service -->
                     <div class="service-card">
                          <i class="fa-brands fa-facebook service-icon"></i>
                         <h3>Facebook Service</h3>
                         <p>Facebook এ Like, Follow, Comment, React করা । </p>
                     </div>
-
-                    <!-- Service 6: Website/App Testing -->
+                     <!-- Service 12: Website Account -->
                      <div class="service-card">
-                         <i class="fa-brands fa-youtube service-icon"></i>
-                        <h3>YouTube Service</h3>
-                        <p>YouTube এ ভিডিও দেখা!</p>
+                        <i class="fa-solid fa-globe service-icon"></i>
+                        <h3>Website Account</h3>
+                        <p>Website এ গিয়ে একাউন্ট করা! </p>
                     </div>
-
-                     <!-- Service 7: Micro Tasks -->
+                     <!-- Service 7: TikTok Service -->
                     <div class="service-card">
                        <i class="fa-brands fa-tiktok service-icon"></i>
                         <h3>TikTok Service</h3>
                         <p>TikTok এ Like Follow করা!</p>
                     </div>
-
-                    <!-- Service 8: Referrals -->
+                     <!-- Service 3: Watching Ad -->
+                     <div class="service-card">
+                        <i class="fa-solid fa-rectangle-ad service-icon"></i>
+                        <h3>Watching Ad</h3>
+                        <p>Ad দেখা। </p>
+                    </div>
+                     <!-- Service 6: YouTube Service -->
+                     <div class="service-card">
+                         <i class="fa-brands fa-youtube service-icon"></i>
+                        <h3>YouTube Service</h3>
+                        <p>YouTube এ ভিডিও দেখা!</p>
+                    </div>
+                     <!-- Service 10: Install Apps -->
+                    <div class="service-card">
+                        <i class="fa-brands fa-google-play service-icon"></i>
+                        <h3>Installing Apps</h3>
+                        <p>Google Play store থেকে নির্দিষ্ট একটি Apps Install করা!</p>
+                    </div>
+                     <!-- Service 11: App Review -->
+                    <div class="service-card">
+                        <i class="fa-brands fa-google-play service-icon"></i>
+                        <h3>Google Play Review</h3>
+                        <p>Google Play store এ গিয়ে নির্দিষ্ট Apss এ Review দেওয়া। </p>
+                    </div>
+                     <!-- Service 8: Reselling (Optional) -->
                     <div class="service-card">
                         <i class="fa-solid fa-cart-shopping service-icon"></i>
                         <h3>Reselling</h3>
                         <p>পণ্য বিক্রি করা। </p>
                     </div>
-                    
-                    
-                      <div class="service-card">
-                        <i class="fa-solid fa-globe service-icon"></i>
-                        <h3>Website Visit</h3>
-                        <p>যে Website এর Link দেওয়া হবে সেই Website এ গিয়ে এক মিনিটের মতো ঘুরাঘুরি করা।</p>
-                    </div>
-                    
-                      <div class="service-card">
-                        <i class="fa-brands fa-google-play service-icon"></i>
-                        <h3>Installing Apps</h3>
-                        <p>Google Play store থেকে নির্দিষ্ট একটি Apps Install করা!</p>
-                    </div>
-                    
-                      <div class="service-card">
-                        <i class="fa-brands fa-google-play service-icon"></i>
-                        <h3>Google Play Review</h3>
-                        <p>Google Play store এ গিয়ে নির্দিষ্ট Apss এ Review দেওয়া। </p>
-                    </div>
-                    
-                        <div class="service-card">
-                        <i class="fa-solid fa-globe service-icon"></i>
-                        <h3>Website Account</h3>
-                        <p>Website এ গিয়ে একাউন্ট করা! </p>
-                    </div>
-
                 </div> <!-- End services-grid -->
 
-                 <div style="text-align: center; margin-top: 50px;">
-                    <p style="color: var(--text-dark); font-size: 1.1rem;">Task availability varies based on client needs and user performance.</p>
+                <!-- NEW: Task Price Table -->
+                <div class="task-table-container">
+                    <table class="task-price-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Est. Price (Taka)</th>
+                                <th>Est. Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Facebook Post</td>
+                                <td>9 Taka</td>
+                                <td>2 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Form Flip</td>
+                                <td>13 Taka</td>
+                                <td>6 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Typing Task</td>
+                                <td>45 Taka</td>
+                                <td>20 Minutes</td>
+                            </tr>
+                             <tr>
+                                <td>Website Visit</td>
+                                <td>0.75 Taka</td>
+                                <td>30 Seconds</td>
+                            </tr>
+                            <tr>
+                                <td>Facebook Post React & Comment</td>
+                                <td>6 Taka</td>
+                                <td>2 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Facebook Page Follow</td>
+                                <td>7 Taka</td>
+                                <td>2 Minutes</td>
+                            </tr>
+                             <tr>
+                                <td>Website Account</td>
+                                <td>18 Taka</td>
+                                <td>10 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>TikTok Account Follow</td>
+                                <td>4 Taka</td>
+                                <td>1.5 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>TikTok Video View & Like</td>
+                                <td>5 Taka</td>
+                                <td>2 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Watch Ad</td>
+                                <td>1 Taka</td>
+                                <td>30 Seconds</td>
+                            </tr>
+                            <tr>
+                                <td>YouTube Channel Subscribe</td>
+                                <td>4 Taka</td>
+                                <td>2 Minutes</td>
+                            </tr>
+                            <tr>
+                                <td>YouTube Video View & Like</td>
+                                <td>6 Taka</td>
+                                <td>2 Minutes</td>
+                            </tr>
+                             <tr>
+                                <td>Install App</td>
+                                <td>12 Taka</td>
+                                <td>5 Minutes</td>
+                            </tr>
+                             <tr>
+                                <td>Review App</td>
+                                <td>7 Taka</td>
+                                <td>3 Minutes</td>
+                            </tr>
+                             <!-- Add Reselling here if it has a standard price/time, otherwise omit or add note -->
+                             <!-- Example:
+                             <tr>
+                                 <td>Product Reselling</td>
+                                 <td>Varies</td>
+                                 <td>Varies</td>
+                             </tr>
+                             -->
+                        </tbody>
+                    </table>
+                </div> <!-- End task-table-container -->
+
+                <!-- NEW: Task How-To CTA -->
+                <div class="task-cta-container">
+                    <a href="/task-tutorials" class="btn">Learn How to Complete Tasks</a> <!-- Change href to your tutorial page -->
                 </div>
-                
-            
+
+                <!-- Availability Note -->
+                 <div style="text-align: center; margin-top: 30px;"> <!-- Reduced margin-top slightly -->
+                    <p style="color: var(--text-light); font-size: 1rem; font-style: italic;">*Task availability, prices, and times are estimates and may vary based on client requirements and project specifics.</p>
+                </div>
 
             </div> <!-- End container -->
         </section>
@@ -330,7 +474,7 @@
             <div class="container">
                 <h2>Ready to Find Your Opportunity?</h2>
                 <p>Sign up for Your Inspire IT today and start exploring the tasks that fit your skills and schedule. It's free to join!</p>
-                <a href="auth.html" class="btn">Join Your Inspire IT Now</a> <!-- Link to sign up page -->
+                <a href="/signup" class="btn">Join Your Inspire IT Now</a> <!-- Link to sign up page -->
             </div>
         </section>
 
@@ -341,9 +485,9 @@
         <div class="container">
             <div class="footer-content">
                 <!-- Footer columns -->
-                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="#">Our Mission</a></li><li><a href="#">How it Works</a></li><li><a href="#">Blog</a></li></ul></div>
-                 <div class="footer-col"><h4>Support</h4><ul><li><a href="#">Help Center / FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Report</a></li><li><a href="#">Payment Info</a></li></ul></div>
-                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="#">Terms of Service</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Earning Disclaimer</a></li></ul></div>
+                 <div class="footer-col"><h4>About Us</h4><ul><li><a href="/about">Our Mission</a></li><li><a href="/#how-it-works">How it Works</a></li><li><a href="/error">Blog</a></li></ul></div>
+                 <div class="footer-col"><h4>Support</h4><ul><li><a href="/faq">Help Center / FAQ</a></li><li><a href="/contact">Contact Us</a></li><li><a href="/report">Report</a></li><li><a href="/error">Payment Info</a></li></ul></div>
+                 <div class="footer-col"><h4>Legal & Transparency</h4><ul><li><a href="/error">Terms of Service</a></li><li><a href="/error">Privacy Policy</a></li><li><a href="/error">Cookie Policy</a></li><li><a href="/error">Earning Disclaimer</a></li></ul></div>
                  <div class="footer-col" style="display: none;"><h4>Connect With Us</h4><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a></div></div>
             </div>
             <div class="footer-bottom">
@@ -371,4 +515,4 @@
     </script>
 
 </body>
-</html>
+                    </html>
